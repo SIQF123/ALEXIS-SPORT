@@ -9,3 +9,15 @@ boton.addEventListener("click", function () {
     boton.textContent = "Modo oscuro";
   }
 });
+const btnHorarios = document.querySelector("#btn-horarios");
+const horarios = document.querySelector("#horarios");
+
+btnHorarios.addEventListener("click", function () {
+  horarios.hidden = !horarios.hidden;
+
+  if (horarios.hidden) {
+    btnHorarios.textContent = "Ver horarios de atención";
+  } else {
+    btnHorarios.textContent = "Ocultar horarios";
+  }
+});
