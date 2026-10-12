@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ALEXIS SPORT</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -13,7 +14,8 @@
     <nav>
       <a href="#inventario">Inventario</a> |
       <a href="#agregar">Agregar material</a> |
-      <a href="#diseno">Diseñar prenda</a>
+      <a href="#diseno">Diseñar prenda</a> |
+      <a href="#contacto">Contacto</a>
     </nav>
     <hr>
   </header>
@@ -136,6 +138,28 @@
             <textarea name="notas" rows="3" cols="40"></textarea></label></p>
 
           <p><button type="submit">Enviar diseño</button></p>
+        </fieldset>
+      </form>
+    </section>
+
+    <hr>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <form action="#contacto" method="get">
+        <fieldset>
+          <legend>Escríbenos</legend>
+
+          <p><label>Nombre:<br>
+            <input type="text" name="nombre" required></label></p>
+
+          <p><label>Correo electrónico:<br>
+            <input type="email" name="correo" required></label></p>
+
+          <p><label>Mensaje:<br>
+            <textarea name="mensaje" rows="4" cols="40" required></textarea></label></p>
+
+          <p><button type="submit">Enviar mensaje</button></p>
         </fieldset>
       </form>
     </section>
