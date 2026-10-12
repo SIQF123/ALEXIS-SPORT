@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taller de Costura</title>
+</head>
+<body>
+
+  <header>
+    <h1>Taller de Costura</h1>
+    <p>Inventario de materiales y diseño de prendas</p>
+    <nav>
+      <a href="#inventario">Inventario</a> |
+      <a href="#agregar">Agregar material</a> |
+      <a href="#diseno">Diseñar prenda</a>
+    </nav>
+    <hr>
+  </header>
+
+  <main>
+
+    <section id="inventario">
+      <h2>Inventario</h2>
+      <table border="1" cellpadding="6">
+        <caption>Materiales disponibles</caption>
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>Categoría</th>
+            <th>Cantidad</th>
+            <th>Mínimo</th>
+            <th>Nivel de stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tela de algodón blanca</td>
+            <td>Telas</td>
+            <td>12 metros</td>
+            <td>5</td>
+            <td><meter min="0" max="20" low="5" high="10" optimum="20" value="12">12</meter></td>
+          </tr>
+          <tr>
+            <td>Hilo negro</td>
+            <td>Hilos</td>
+            <td>1 cono</td>
+            <td>3</td>
+            <td><meter min="0" max="10" low="3" high="6" optimum="10" value="1">1</meter> Stock bajo</td>
+          </tr>
+          <tr>
+            <td>Botones de 15 mm</td>
+            <td>Botones</td>
+            <td>80 unidades</td>
+            <td>30</td>
+            <td><meter min="0" max="100" low="30" high="60" optimum="100" value="80">80</meter></td>
+          </tr>
+          <tr>
+            <td>Cierres de 20 cm</td>
+            <td>Cierres</td>
+            <td>6 unidades</td>
+            <td>10</td>
+            <td><meter min="0" max="30" low="10" high="20" optimum="30" value="6">6</meter> Stock bajo</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr>
+
+    <section id="agregar">
+      <h2>Agregar material</h2>
+      <form action="#inventario" method="get">
+        <fieldset>
+          <legend>Datos del material</legend>
+
+          <p><label>Nombre: <input type="text" name="nombre" required></label></p>
+
+          <p><label>Categoría:
+            <select name="categoria">
+              <option>Telas</option>
+              <option>Hilos</option>
+              <option>Botones</option>
+              <option>Cierres</option>
+              <option>Herramientas</option>
+            </select>
+          </label></p>
+
+          <p><label>Cantidad: <input type="number" name="cantidad" min="0" required></label></p>
+          <p><label>Stock mínimo: <input type="number" name="minimo" min="0"></label></p>
+
+          <p><button type="submit">Agregar</button> <button type="reset">Limpiar</button></p>
+        </fieldset>
+      </form>
+    </section>
+
+    <hr>
+    <section id="diseno">
+      <h2>Diseñar prenda</h2>
+      <form action="#diseno" method="get">
+        <fieldset>
+          <legend>Personaliza tu prenda</legend>
+
+          <p><label>Prenda:
+            <select name="prenda">
+              <option>Camiseta</option>
+              <option>Vestido</option>
+              <option>Falda</option>
+              <option>Pantalón</option>
+            </select>
+          </label></p>
+
+          <p>Talla:
+            <label><input type="radio" name="talla" value="S"> S</label>
+            <label><input type="radio" name="talla" value="M" checked> M</label>
+            <label><input type="radio" name="talla" value="L"> L</label>
+            <label><input type="radio" name="talla" value="XL"> XL</label>
+          </p>
+
+          <p><label>Color principal: <input type="color" name="color1" value="#3d5a80"></label></p>
+          <p><label>Color de detalles: <input type="color" name="color2" value="#b23a48"></label></p>
+
+          <p><label>Estampado:
+            <select name="estampado">
+              <option>Liso</option>
+              <option>Rayas</option>
+              <option>Lunares</option>
+              <option>Cuadros</option>
+            </select>
+          </label></p>
+
+          <p><label>Texto en la prenda (opcional):<br>
+            <input type="text" name="texto" maxlength="20"></label></p>
+
+          <p><label>Notas para el taller:<br>
+            <textarea name="notas" rows="3" cols="40"></textarea></label></p>
+
+          <p><button type="submit">Enviar diseño</button></p>
+        </fieldset>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <hr>
+    <p>Proyecto de taller de costura · Solo HTML</p>
+  </footer>
+
+</body>
+</html>
