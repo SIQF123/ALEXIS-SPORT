@@ -18,8 +18,16 @@ header {
   margin-bottom: 20px;
 }
 
-header a {
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+nav a {
+  display: inline-block;
   color: white;
+  padding: 6px 10px;
 }
 
 section {
@@ -58,4 +66,30 @@ button {
 footer {
   text-align: center;
   padding: 10px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  section {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
 }
