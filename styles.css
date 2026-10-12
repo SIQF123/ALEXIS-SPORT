@@ -67,7 +67,21 @@ footer {
   text-align: center;
   padding: 10px;
 }
-
+body.oscuro {
+    background-color: #1e1e1e;
+    color: #eeeeee;
+}
+body.oscuro section {
+    background-color: #2b2b2b;
+}
+body.oscuro h2 {
+    color: 9dbbe0;
+}
+body.oscuro table,
+body.oscuro th,
+body.oscuro td {
+    border-color: #888;
+}
 @media (max-width: 600px) {
   body {
     padding: 10px;
