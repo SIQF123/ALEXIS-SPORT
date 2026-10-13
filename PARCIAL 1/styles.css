@@ -3,7 +3,7 @@ body {
   max-width: 800px;
   padding: 16px;
   background-color: #fdf2f6;
-  color: #7b2d5b;
+  color: #2b239e;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.6;
@@ -16,12 +16,12 @@ header {
 
 h1 {
   margin: 0 0 12px 0;
-  color: #7b2d5b;
+  color: #9c271e;
 }
 
 h2 {
   margin-top: 0;
-  color: #2f7d4f;
+  color: #508dc7;
 }
 
 nav {
@@ -33,20 +33,20 @@ nav {
 nav a {
   text-decoration: none;
   color: #ffffff;
-  background-color: #7b2d5b;
+  background-color: #1c2dc5ef;
   padding: 8px 14px;
   border-radius: 6px;
 }
 
 nav a:hover {
-  background-color: #2f7d4f;
+  background-color: #1ed4cb;
 }
 
 section {
   background-color: #ffffff;
   padding: 20px;
   margin-bottom: 20px;
-  border: 2px solid #2f7d4f;
+  border: 2px solid #460a0a;
   border-radius: 12px;
 }
 
@@ -60,7 +60,7 @@ input, textarea {
   width: 100%;
   box-sizing: border-box;
   padding: 8px;
-  border: 1px solid #7b2d5b;
+  border: 1px solid #74154c;
   border-radius: 6px;
   font-family: inherit;
 }
@@ -79,16 +79,16 @@ button {
 #mensaje {
   margin-top: 16px;
   padding: 12px;
-  border: 2px solid #2f7d4f;
+  border: 2px solid #19677a;
   border-radius: 6px;
-  color: #2f7d4f;
+  color: #1e577c;
   font-weight: bold;
 }
 
 footer {
   text-align: center;
   padding: 12px;
-  border-top: 2px solid #7b2d5b;
+  border-top: 2px solid #1b3368;
 }
 
 .oculto { display: none; }
