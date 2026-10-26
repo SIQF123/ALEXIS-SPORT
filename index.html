@@ -150,22 +150,23 @@
       <p><button id="btn-horarios" type="button">Ver horarios de atención</button></p>
       <p id="horarios" hidden>Lunes a viernes: 9:00 a 18:00<br>Sábados: 9:00 a 13:00<br>Domingos: cerrado</p>
       <!-- Por ahora el formulario no envía datos: solo está maquetado -->
-      <form action="#contacto" method="get">
+      <form id="form-contacto" action="#contacto" method="get" novalidate>
         <fieldset>
           <legend>Escríbenos</legend>
 
           <p><label>Nombre:<br>
-            <input type="text" name="nombre" required></label></p>
+            <input type="text" id="contacto-nombre" name="nombre" required></label></p>
 
           <p><label>Correo electrónico:<br>
-            <input type="email" name="correo" required></label></p>
+            <input type="email" id="contacto-correo" name="correo" required></label></p>
 
           <p><label>Mensaje:<br>
-            <textarea name="mensaje" rows="4" cols="40" required></textarea></label></p>
+            <textarea id="contacto-mensaje" name="mensaje" rows="4" cols="40" required></textarea></label></p>
 
           <p><button type="submit">Enviar mensaje</button></p>
         </fieldset>
       </form>
+      <p id="mensaje-form"></p>
     </section>
 
   </main>
