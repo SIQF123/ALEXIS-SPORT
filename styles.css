@@ -67,21 +67,36 @@ footer {
   text-align: center;
   padding: 10px;
 }
+
+.error {
+  color: #b23a48;
+  font-weight: bold;
+}
+
+.exito {
+  color: #2e7d32;
+  font-weight: bold;
+}
+
 body.oscuro {
-    background-color: #1e1e1e;
-    color: #eeeeee;
+  background-color: #1e1e1e;
+  color: #eeeeee;
 }
+
 body.oscuro section {
-    background-color: #2b2b2b;
+  background-color: #2b2b2b;
 }
+
 body.oscuro h2 {
-    color: 9dbbe0;
+  color: #9dbbe0;
 }
+
 body.oscuro table,
 body.oscuro th,
 body.oscuro td {
-    border-color: #888;
+  border-color: #888;
 }
+
 @media (max-width: 600px) {
   body {
     padding: 10px;
