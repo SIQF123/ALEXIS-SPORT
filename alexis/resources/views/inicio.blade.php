@@ -13,6 +13,12 @@
     <nav>
       <a href="/">Inicio</a>
       <a href="/contacto">Contacto</a>
+      @auth
+        <a href="/dashboard">Panel</a>
+      @endauth
+      @guest
+        <a href="/login">Iniciar sesión</a>
+      @endguest
     </nav>
   </header>
 
