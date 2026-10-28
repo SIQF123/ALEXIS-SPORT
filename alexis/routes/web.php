@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Models\Juguete;
 
 Route::get('/', function () {
     return view('inicio');
@@ -12,7 +13,7 @@ Route::get('/contacto', function () {
     return view('contacto');
 });
 
-// Tercera muralla: validacion en el servidor
+
 Route::post('/contacto', function (Request $request) {
     $request->validate([
         'nombre'  => 'required|max:100',
@@ -29,7 +30,7 @@ Route::post('/contacto', function (Request $request) {
     return back()->with('ok', '¡Mensaje recibido!');
 });
 
-// Login
+
 Route::get('/login', function () {
     return view('login');
 })->name('login');
@@ -52,7 +53,7 @@ Route::post('/login', function (Request $request) {
     return back()->withErrors(['email' => 'Correo o contraseña incorrectos.'])->onlyInput('email');
 });
 
-// Cerrar sesion
+
 Route::post('/logout', function (Request $request) {
     Auth::logout();
     $request->session()->invalidate();
@@ -60,7 +61,34 @@ Route::post('/logout', function (Request $request) {
     return redirect('/');
 });
 
-// El candado: solo entra quien inicio sesion
+
 Route::get('/dashboard', function () {
     return view('panel');
 })->middleware('auth');
+
+Route::get('/juguetes', function () {
+    $juguetes = Juguete::all();
+    return view('lista_juguetes', ['juguetes' => $juguetes]);
+});
+ 
+Route::get('/juguetes/nuevo', function () {
+    return view('nuevo_juguete');
+});
+ 
+Route::post('/juguetes/nuevo', function () {
+    request()->validate([
+        'nombre' => 'required',
+        'precio' => 'required|integer',
+    ], [
+        'nombre.required' => 'Pone el nombre del juguete.',
+        'precio.required' => 'Pone el precio del juguete.',
+        'precio.integer'  => 'Aca el precio va entero, sin decimales ni letras.',
+    ]);
+ 
+    Juguete::create([
+        'nombre' => request()->input('nombre'),
+        'precio' => request()->input('precio'),
+    ]);
+ 
+    return redirect('/juguetes');
+});
