@@ -15,7 +15,7 @@
   </main>
  
   <footer>
-    <p>Integradora - [TU NOMBRE COMPLETO] - 27 de octubre de 2026</p>
+    <p>Integradora - SERGIO IVAN QUISBERT FLORES - 27 de octubre de 2026</p>
   </footer>
 </body>
 </html>

@@ -11,7 +11,7 @@
     @endforeach
   </ul>
 
-  <p>Estante atendido por [TU NOMBRE COMPLETO]</p>
+  <p>Estante atendido por SERGIO IVAN QUISBERT FLORES</p>
 
   <p><a href="/juguetes/nuevo">Registrar un juguete nuevo</a></p>
 @endsection
