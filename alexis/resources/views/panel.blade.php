@@ -1,41 +1,142 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Panel - ALEXIS SPORT</title>
-  <link rel="stylesheet" href="{{ asset('styles.css') }}">
-</head>
-<body>
-  <header>
-    <h1>ALEXIS SPORT</h1>
-    <p>Inventario de materiales y diseño de prendas</p>
-    <nav>
-      <a href="/">Inicio</a>
-      <a href="/contacto">Contacto</a>
-      @auth
-        <a href="/dashboard">Panel</a>
-      @endauth
-      @guest
-        <a href="/login">Iniciar sesión</a>
-      @endguest
-    </nav>
-  </header>
+@extends('layouts.alexis')
 
-  <main>
-    <section>
-      <h2>Panel privado</h2>
-      <p>Hola, {{ Auth::user()->name }}. Esta página solo la ve quien inició sesión.</p>
+@section('titulo', 'Panel')
 
-      <form method="POST" action="/logout">
-        @csrf
-        <button type="submit">Cerrar sesión</button>
-      </form>
-    </section>
-  </main>
+@section('contenido')
+  <section class="tarjeta">
+    <h2>Panel de inventario</h2>
+    <p>Hola, {{ Auth::user()->name }}. Aquí controlas los materiales del taller.</p>
 
-  <footer>
-    <p>Proyecto ALEXIS SPORT 2026</p>
-  </footer>
-</body>
-</html>
+    @if (session('ok'))
+      <p class="exito">{{ session('ok') }}</p>
+    @endif
+
+    <div class="resumen">
+      <div class="dato">
+        <span class="numero">{{ $total }}</span>
+        materiales registrados
+      </div>
+      <div class="dato {{ $bajos > 0 ? 'alerta' : '' }}">
+        <span class="numero">{{ $bajos }}</span>
+        con stock bajo
+      </div>
+    </div>
+
+    <p><a class="boton" href="/materiales/nuevo">+ Agregar material</a></p>
+
+    <div class="tabla-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>Categoría</th>
+            <th>Cantidad</th>
+            <th>Mínimo</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          @forelse ($materiales as $m)
+            <tr>
+              <td>{{ $m->nombre }}</td>
+              <td>{{ $m->categoria }}</td>
+              <td>{{ $m->cantidad }}</td>
+              <td>{{ $m->minimo }}</td>
+              <td>
+                @if ($m->cantidad < $m->minimo)
+                  <span class="etiqueta bajo">Stock bajo</span>
+                @else
+                  <span class="etiqueta ok">Stock suficiente</span>
+                @endif
+              </td>
+            </tr>
+          @empty
+            <tr>
+              <td colspan="5">Aún no hay materiales. Agrega el primero.</td>
+            </tr>
+          @endforelse
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section class="tarjeta">
+    <h2>Diseños solicitados</h2>
+    <p>Prendas personalizadas que enviaron los clientes desde la página pública.</p>
+
+    <div class="tabla-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Prenda</th>
+            <th>Talla</th>
+            <th>Colores</th>
+            <th>Estampado</th>
+            <th>Texto</th>
+            <th>Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          @forelse ($disenos as $d)
+            <tr>
+              <td>{{ $d->created_at->format('d/m/Y') }}</td>
+              <td>{{ $d->prenda }}</td>
+              <td>{{ $d->talla }}</td>
+              <td>
+                <span class="muestra" style="background: {{ $d->color_principal }}"></span>
+                <span class="muestra" style="background: {{ $d->color_detalles }}"></span>
+              </td>
+              <td>{{ $d->estampado }}</td>
+              <td>{{ $d->texto ?: '-' }}</td>
+              <td>{{ $d->notas ?: '-' }}</td>
+            </tr>
+          @empty
+            <tr>
+              <td colspan="7">Todavía no hay diseños. Comparte el enlace /diseno con tus clientes.</td>
+            </tr>
+              <section class="tarjeta">
+    <h2>Diseños solicitados</h2>
+    <p>Prendas personalizadas que enviaron los clientes desde la página pública.</p>
+
+    <div class="tabla-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Prenda</th>
+            <th>Talla</th>
+            <th>Colores</th>
+            <th>Estampado</th>
+            <th>Texto</th>
+            <th>Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          @forelse ($disenos as $d)
+            <tr>
+              <td>{{ $d->created_at->format('d/m/Y') }}</td>
+              <td>{{ $d->prenda }}</td>
+              <td>{{ $d->talla }}</td>
+              <td>
+                <span class="muestra" style="background: {{ $d->color_principal }}"></span>
+                <span class="muestra" style="background: {{ $d->color_detalles }}"></span>
+              </td>
+              <td>{{ $d->estampado }}</td>
+              <td>{{ $d->texto ?: '-' }}</td>
+              <td>{{ $d->notas ?: '-' }}</td>
+            </tr>
+          @empty
+            <tr>
+              <td colspan="7">Todavía no hay diseños. Comparte el enlace /diseno con tus clientes.</td>
+            </tr>
+          @endforelse
+        </tbody>
+      </table>
+    </div>
+  </section>
+          @endforelse
+        </tbody>
+      </table>
+    </div>
+  </section>
+@endsection

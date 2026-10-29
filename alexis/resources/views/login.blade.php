@@ -1,52 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Iniciar sesión - ALEXIS SPORT</title>
-  <link rel="stylesheet" href="{{ asset('styles.css') }}">
-</head>
-<body>
-  <header>
-    <h1>ALEXIS SPORT</h1>
-    <p>Inventario de materiales y diseño de prendas</p>
-    <nav>
-      <a href="/">Inicio</a>
-      <a href="/contacto">Contacto</a>
-      @auth
-        <a href="/dashboard">Panel</a>
-      @endauth
-      @guest
-        <a href="/login">Iniciar sesión</a>
-      @endguest
-    </nav>
-  </header>
+@extends('layouts.alexis')
 
-  <main>
-    <section>
-      <h2>Iniciar sesión</h2>
+@section('titulo', 'Iniciar sesión')
 
-      <form method="POST" action="/login">
-        @csrf
-        <fieldset>
-          <legend>Acceso al panel</legend>
+@section('contenido')
+  <section class="tarjeta angosta">
+    <h2>Iniciar sesión</h2>
+    <p>El panel es privado: solo el personal del taller puede entrar.</p>
 
-          <p><label>Correo electrónico:<br>
-            <input type="email" name="email" value="{{ old('email') }}"></label>
-            @error('email') <br><span class="error">{{ $message }}</span> @enderror</p>
+    <form method="POST" action="/login">
+      @csrf
 
-          <p><label>Contraseña:<br>
-            <input type="password" name="password"></label>
-            @error('password') <br><span class="error">{{ $message }}</span> @enderror</p>
+      <div class="campo">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" value="{{ old('email') }}">
+        @error('email') <span class="error">{{ $message }}</span> @enderror
+      </div>
 
-          <p><button type="submit">Entrar</button></p>
-        </fieldset>
-      </form>
-    </section>
-  </main>
+      <div class="campo">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password">
+        @error('password') <span class="error">{{ $message }}</span> @enderror
+      </div>
 
-  <footer>
-    <p>Proyecto ALEXIS SPORT 2026</p>
-  </footer>
-</body>
-</html>
+      <button type="submit" class="boton">Entrar</button>
+    </form>
+  </section>
+@endsection

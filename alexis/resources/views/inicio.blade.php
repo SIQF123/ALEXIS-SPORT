@@ -1,36 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Inicio - ALEXIS SPORT</title>
-  <link rel="stylesheet" href="{{ asset('styles.css') }}">
-</head>
-<body>
-  <header>
-    <h1>ALEXIS SPORT</h1>
-    <p>Inventario de materiales y diseño de prendas</p>
-    <nav>
-      <a href="/">Inicio</a>
-      <a href="/contacto">Contacto</a>
-      @auth
-        <a href="/dashboard">Panel</a>
-      @endauth
-      @guest
-        <a href="/login">Iniciar sesión</a>
-      @endguest
-    </nav>
-  </header>
+@extends('layouts.alexis')
 
-  <main>
-    <section>
-      <h2>Bienvenido a ALEXIS SPORT</h2>
-      <p>Somos un taller de ropa deportiva. Aquí controlamos nuestros materiales y diseñamos prendas a tu medida.</p>
-    </section>
-  </main>
+@section('titulo', 'Inicio')
 
-  <footer>
-    <p>Proyecto ALEXIS SPORT 2026</p>
-  </footer>
-</body>
-</html>
+@section('contenido')
+  <section class="tarjeta portada">
+    <h2>Bienvenido a ALEXIS SPORT</h2>
+    <p>Somos un taller de ropa deportiva. Diseñamos y confeccionamos prendas a tu medida.</p>
+  </section>
+
+  <section class="tarjeta">
+    <h2>El problema que resolvemos</h2>
+    <p>
+      Antes, el taller anotaba sus telas, hilos, botones y cierres en un cuaderno.
+      El cuaderno se perdía, las cantidades no estaban al día y a veces nos quedábamos
+      sin material a mitad de un pedido.
+    </p>
+    <p>
+      Ahora el inventario vive en un panel privado: cada material tiene su cantidad
+      y su stock mínimo, y el sistema avisa cuando algo se está acabando.
+    </p>
+    <p><a class="boton" href="/login">Entrar al panel</a></p>
+  </section>
+@endsection

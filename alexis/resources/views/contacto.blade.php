@@ -1,61 +1,38 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contacto - ALEXIS SPORT</title>
-  <link rel="stylesheet" href="{{ asset('styles.css') }}">
-</head>
-<body>
-  <header>
-    <h1>ALEXIS SPORT</h1>
-    <p>Inventario de materiales y diseño de prendas</p>
-    <nav>
-      <a href="/">Inicio</a>
-      <a href="/contacto">Contacto</a>
-      @auth
-        <a href="/dashboard">Panel</a>
-      @endauth
-      @guest
-        <a href="/login">Iniciar sesión</a>
-      @endguest
-    </nav>
-  </header>
+@extends('layouts.alexis')
 
-  <main>
-    <section>
-      <h2>Contacto</h2>
-      <p>Escríbenos y te responderemos pronto.</p>
+@section('titulo', 'Contacto')
 
-      @if (session('ok'))
-        <p class="exito">{{ session('ok') }}</p>
-      @endif
+@section('contenido')
+  <section class="tarjeta">
+    <h2>Contacto</h2>
+    <p>Escríbenos y te responderemos pronto.</p>
 
-      <form method="POST" action="/contacto">
-        @csrf
-        <fieldset>
-          <legend>Escríbenos</legend>
+    @if (session('ok'))
+      <p class="exito">{{ session('ok') }}</p>
+    @endif
 
-          <p><label>Nombre:<br>
-            <input type="text" name="nombre" value="{{ old('nombre') }}"></label>
-            @error('nombre') <br><span class="error">{{ $message }}</span> @enderror</p>
+    <form method="POST" action="/contacto">
+      @csrf
 
-          <p><label>Correo electrónico:<br>
-            <input type="email" name="correo" value="{{ old('correo') }}"></label>
-            @error('correo') <br><span class="error">{{ $message }}</span> @enderror</p>
+      <div class="campo">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}">
+        @error('nombre') <span class="error">{{ $message }}</span> @enderror
+      </div>
 
-          <p><label>Mensaje:<br>
-            <textarea name="mensaje" rows="4" cols="40">{{ old('mensaje') }}</textarea></label>
-            @error('mensaje') <br><span class="error">{{ $message }}</span> @enderror</p>
+      <div class="campo">
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" value="{{ old('correo') }}">
+        @error('correo') <span class="error">{{ $message }}</span> @enderror
+      </div>
 
-          <p><button type="submit">Enviar</button></p>
-        </fieldset>
-      </form>
-    </section>
-  </main>
+      <div class="campo">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="4">{{ old('mensaje') }}</textarea>
+        @error('mensaje') <span class="error">{{ $message }}</span> @enderror
+      </div>
 
-  <footer>
-    <p>Proyecto ALEXIS SPORT 2026</p>
-  </footer>
-</body>
-</html>
+      <button type="submit" class="boton">Enviar mensaje</button>
+    </form>
+  </section>
+@endsection
