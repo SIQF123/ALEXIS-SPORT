@@ -2,6 +2,7 @@
 
 use App\Models\Diseno;
 use App\Models\Material;
+use App\Models\Juguete;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -144,3 +145,35 @@ Route::post('/materiales/nuevo', function (Request $request) {
     return redirect('/dashboard')->with('ok', 'Material agregado al inventario.');
 })->middleware('auth');
 
+// ---- Integradora y reto: Jugueteria El Trompo ----
+Route::get('/juguetes', function () {
+    $juguetes = Juguete::all();
+    return view('lista_juguetes', ['juguetes' => $juguetes]);
+});
+
+Route::get('/juguetes/nuevo', function () {
+    return view('nuevo_juguete');
+});
+
+Route::post('/juguetes/nuevo', function () {
+    request()->validate([
+        'nombre' => 'required',
+        'precio' => 'required|integer',
+        'stock'  => 'required|integer|min:0',
+    ], [
+        'nombre.required' => 'Pone el nombre del juguete.',
+        'precio.required' => 'Pone el precio del juguete.',
+        'precio.integer'  => 'Aca el precio va entero, sin decimales ni letras.',
+        'stock.required'  => 'Pone cuántas unidades hay en el estante.',
+        'stock.integer'   => 'El stock va entero, sin decimales ni letras.',
+        'stock.min'       => 'El stock no puede ser negativo.',
+    ]);
+
+    Juguete::create([
+        'nombre' => request()->input('nombre'),
+        'precio' => request()->input('precio'),
+        'stock'  => request()->input('stock'),
+    ]);
+
+    return redirect('/juguetes');
+});

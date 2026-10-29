@@ -21,7 +21,10 @@
       <label for="precio">Precio en Bs:</label><br>
       <input type="number" id="precio" name="precio">
     </p>
-
+<p>
+  <label for="stock">Stock (unidades en el estante):</label><br>
+  <input type="number" id="stock" name="stock">
+</p>
     <button type="submit">Registrar juguete</button>
   </form>
 @endsection

@@ -9,5 +9,5 @@ class Juguete extends Model
 {
     protected $table = 'juguetes';
 
-    protected $fillable = ['nombre', 'precio'];
+   protected $fillable = ['nombre', 'precio', 'stock']; 
 }
